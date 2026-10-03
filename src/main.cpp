@@ -11,8 +11,20 @@
 
 
 int main() {
-    std::cout << "test";
-    clearScreen();
+    bool exit = false;
+    std::string userInput = "a";
+
+    while (exit == false) {
+        std::cout << "test";
+        std::cin >> userInput;
+        if (userInput == "clear") {
+            clearScreen();
+        }
+
+        if (userInput == "exit") {
+            exit = true;
+        }
+    }
 
     return 0;
 }
