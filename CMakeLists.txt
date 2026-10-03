@@ -15,5 +15,5 @@ endif()
 # Define the target program and its source files
 add_executable("Simple-Calculator-CLI"
     src/main.cpp
-    src/
+    src/libs/system-cli/system-cli.cpp
 )
