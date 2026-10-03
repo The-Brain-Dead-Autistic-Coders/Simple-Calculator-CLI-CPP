@@ -1,0 +1,63 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: ${{ matrix.name }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux x64
+            os: ubuntu-24.04
+            artifact: Simple-Calculator-CLI-linux-x64
+
+          - name: Windows x64
+            os: windows-2025
+            artifact: Simple-Calculator-CLI-windows-x64
+
+          - name: macOS Intel
+            os: macos-15-intel
+            artifact: Simple-Calculator-CLI-macos-x64
+
+          - name: macOS Apple Silicon
+            os: macos-15
+            artifact: Simple-Calculator-CLI-macos-arm64
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configure CMake
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+
+      - name: Build
+        run: cmake --build build --config Release --parallel
+
+      - name: Prepare artifact
+        shell: bash
+        run: |
+          mkdir -p artifact
+
+          if [[ "${{ runner.os }}" == "Windows" ]]; then
+            cp "build/Release/Simple-Calculator-CLI.exe" "artifact/"
+          else
+            cp "build/Simple-Calculator-CLI" "artifact/"
+          fi
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: artifact/
+          if-no-files-found: error
+          retention-days: 14
