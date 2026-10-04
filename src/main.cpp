@@ -8,7 +8,7 @@
 
 
 
-
+//term screen 82x24
 
 int main() {
     bool exit = false;
@@ -23,12 +23,24 @@ int main() {
 
         if (userInput == "clear") {
             clearScreen();
+            clearScreen();
         }
 
         if (userInput == "exit") {
             exit = true;
         }
+
+        if (userInput == "square") {
+            int squareWidth;
+            int squareHeight;
+            std::cin >> squareWidth;
+            std::cin >> squareHeight;
+            clearScreen();
+            clearScreen();
+            renderSquare(squareWidth, squareHeight);
+        }
     }
 
     return 0;
+    
 }

@@ -3,4 +3,6 @@
 
 void clearScreen();
 
+void renderSquare(int width, int height);
+
 #endif
