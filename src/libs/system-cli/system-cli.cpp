@@ -28,10 +28,12 @@ void clearScreen() {
 void renderSquare(int width, int height) {
     int lineHeightCounterStorage = height;
     int lineWidthCounterStorage = width;
-    while (width > 0) {
+    std::cout << "┌";
+    while (width > 2) {
         std::cout << "─";
         width = width - 1;
     }
+    std::cout << "┐";
     width = lineWidthCounterStorage;
     std::cout << "\n";
     while (height > 2) {
@@ -46,8 +48,10 @@ void renderSquare(int width, int height) {
         height = height - 1;
     }
     height = lineHeightCounterStorage;
-    while (width > 0) {
+    std::cout << "└";
+    while (width > 2) {
         std::cout << "─";
         width = width - 1;
     }
+    std::cout << "┘";
 }
