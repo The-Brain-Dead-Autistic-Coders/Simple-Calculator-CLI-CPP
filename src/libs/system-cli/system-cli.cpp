@@ -43,6 +43,7 @@ void renderSquare(int width, int height) {
         width = lineWidthCounterStorage;
         std::cout << "│";
         std::cout << "\n";
+        height = height - 1;
     }
     height = lineHeightCounterStorage;
     while (width > 0) {
