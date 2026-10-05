@@ -43,17 +43,19 @@ int main() {
         if (userInput == "anim") {
             int offsetY = 0;
             int offsetX = 0;
+            int squareWidthAnim = 1;
+            int squareHeightAnim = 1;
             while (offsetY < 20 && offsetX < 20) {
                 clearScreen();
                 clearScreen();
                 offsetCursor(offsetX, offsetY);
-                renderSquare(1, 1);
+                renderSquare(squareWidthAnim, squareHeightAnim);
                 offsetX = offsetX + 1;
 
                 clearScreen();
                 clearScreen();
                 offsetCursor(offsetX, offsetY);
-                renderSquare(1, 1);
+                renderSquare(squareWidthAnim, squareHeightAnim);
                 offsetY = offsetY + 1;
 
             }
