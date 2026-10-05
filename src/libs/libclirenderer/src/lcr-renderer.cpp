@@ -2,29 +2,12 @@
 #include <fstream>
 #include <cmath>
 #include <cstdlib>
-#include "system-cli.h"
+
+//Main h file
+#include "../libclirenderer.h"
 
 
-
-
-//Clears the Terminal Screen Functions across operating systems
-void clearScreen() {
-    
-    #ifdef _WIN32
-        std::system("cls");
-    #endif
-
-    #ifdef __linux__
-        std::system("clear");
-    #endif
-
-    #ifdef __APPLE__
-        std::system("clear");
-    #endif
-
-
-}
-
+//Render a square based on parameters
 void renderSquare(int width, int height) {
     int lineHeightCounterStorage = height;
     int lineWidthCounterStorage = width;
