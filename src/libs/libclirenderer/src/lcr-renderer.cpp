@@ -38,3 +38,16 @@ void renderSquare(int width, int height) {
     }
     std::cout << "┘";
 }
+
+
+//Offset terminal text cursor
+void offsetCursor(int x, int y) {
+    while (y > 0) {
+        std::cout << "\n";
+        y = y - 1;
+    }
+    while (x > 0) {
+        std::cout << " ";
+        x = x - 1;
+    }
+}
