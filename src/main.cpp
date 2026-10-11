@@ -48,6 +48,7 @@ int main() {
             clearScreen();
             clearScreen();
             offsetCursor(offsetXoffset, offsetYoffset);
+            std::cout << "DVD";
         }
 
         if (userInput == "anim") {
