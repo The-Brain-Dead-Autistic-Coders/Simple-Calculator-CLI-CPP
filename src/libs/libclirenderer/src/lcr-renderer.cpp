@@ -3,11 +3,29 @@
 #include <cmath>
 #include <cstdlib>
 
+#ifdef _WIN32
+    #include <windows.h>
+#endif
+
 //Main h file
 #include "../libclirenderer.h"
 
 void clearScreen() {
-    std::cout << "\033[2J\033[H" << std::flush;
+    #ifdef _WIN32
+        // Get the standard output handle for Windows
+        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+        if (hConsole != INVALID_HANDLE_VALUE) {
+            DWORD mode = 0;
+            GetConsoleMode(hConsole, &mode);
+            // Enable ANSI escape code processing
+            SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+        }
+    #endif
+
+    // \033[H   -> Moves cursor to top-left
+    // \033[2J  -> Clears visible viewport
+    // \033[3J  -> Wipes out scrollback history
+    std::cout << "\033[H\033[2J\033[3J" << std::flush;
 }
 
 
