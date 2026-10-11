@@ -2,6 +2,8 @@
 #include <fstream>
 #include <cmath>
 #include <cstdlib>
+#include <thread>
+#include <chrono>
 
 #ifdef _WIN32
     #include <windows.h>
@@ -26,6 +28,15 @@ void clearScreen() {
     // \033[2J  -> Clears visible viewport
     // \033[3J  -> Wipes out scrollback history
     std::cout << "\033[H\033[2J\033[3J" << std::flush;
+}
+
+//wait with support for a floating point number
+void waitFloat(double waitTime) {
+    // Define a duration type that uses 'double' for seconds
+    using duration_seconds = std::chrono::duration<double>;
+
+    // Now you can pass decimals perfectly!
+    std::this_thread::sleep_for(duration_seconds(waitTime));
 }
 
 

@@ -13,4 +13,7 @@ void offsetCursor(int x, int y);
 //clears the terminal screen
 void clearScreen();
 
+// Wait with support for floating point numbers
+void waitFloat(double waitTime);
+
 #endif

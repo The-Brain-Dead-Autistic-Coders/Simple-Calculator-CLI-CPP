@@ -63,6 +63,7 @@ int main() {
                 //renderSquare(squareWidthAnim, squareHeightAnim);
                 std::cout << "DVD";
                 offsetX = offsetX + 1;
+                waitFloat(1);
 
                 clearScreen();
                 clearScreen();
@@ -70,6 +71,7 @@ int main() {
                 //renderSquare(squareWidthAnim, squareHeightAnim);
                 std::cout << "DVD";
                 offsetY = offsetY + 1;
+                waitFloat(1);
 
             }
             
