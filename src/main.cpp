@@ -45,6 +45,8 @@ int main() {
             int offsetXoffset = 0;
             std::cin >> offsetXoffset;
             std::cin >> offsetYoffset;
+            clearScreen();
+            clearScreen();
             offsetCursor(offsetXoffset, offsetYoffset);
         }
 
