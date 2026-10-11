@@ -40,6 +40,14 @@ int main() {
             renderSquare(squareWidth, squareHeight);
         }
 
+        if (userInput == "offset") {
+            int offsetYoffset = 0;
+            int offsetXoffset = 0;
+            std::cin >> offsetXoffset;
+            std::cin >> offsetYoffset;
+            offsetCursor(offsetXoffset, offsetYoffset);
+        }
+
         if (userInput == "anim") {
             int offsetY = 0;
             int offsetX = 0;
