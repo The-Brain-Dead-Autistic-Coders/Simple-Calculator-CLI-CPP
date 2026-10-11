@@ -6,6 +6,10 @@
 //Main h file
 #include "../libclirenderer.h"
 
+void clearScreen() {
+    std::cout << "\033[2J\033[H" << std::flush;
+}
+
 
 //Render a square based on parameters
 void renderSquare(int width, int height) {

@@ -10,7 +10,7 @@
 
 
 //Clears the Terminal Screen Functions across operating systems
-void clearScreen() {
+void clearScreenSys() {
     
     #ifdef _WIN32
         std::system("cls");
