@@ -12,8 +12,9 @@
 //Main h file
 #include "../libclirenderer.h"
 
-void clearScreen() {
+void winAnsiInit(){
     #ifdef _WIN32
+            
         // Get the standard output handle for Windows
         HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
         if (hConsole != INVALID_HANDLE_VALUE) {
@@ -22,8 +23,12 @@ void clearScreen() {
             // Enable ANSI escape code processing
             SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         }
+            
     #endif
+}
 
+void clearScreen() {
+    winAnsiInit();
     // \033[H   -> Moves cursor to top-left
     // \033[2J  -> Clears visible viewport
     // \033[3J  -> Wipes out scrollback history
@@ -86,6 +91,7 @@ void offsetCursor(int x, int y) {
 }
 
 void offsetCursorAnsi(int x, int y) {
+    winAnsiInit();
     // ANSI escape code to move cursor to row (y + 1) and column (x + 1)
     std::cout << "\033[" << (y + 1) << ";" << (x + 1) << "H" << std::flush;
 }

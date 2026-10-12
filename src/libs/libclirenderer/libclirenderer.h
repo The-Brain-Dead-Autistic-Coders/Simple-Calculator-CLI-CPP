@@ -19,4 +19,6 @@ void waitFloat(double waitTime);
 // Offsets cursor using ansi codes
 void offsetCursorAnsi(int x, int y);
 
+// Initialize use of Ansi codes in windows
+void winAnsiInit();
 #endif
