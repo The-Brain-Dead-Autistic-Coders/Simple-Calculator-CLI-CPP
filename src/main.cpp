@@ -56,6 +56,7 @@ int main() {
             int offsetX = 0;
             int squareWidthAnim = 1;
             int squareHeightAnim = 1;
+            showCursor(false);
             while (offsetY < 20 && offsetX < 20) {
                 //clearScreen();
                 clearScreen();
@@ -74,6 +75,7 @@ int main() {
                 waitFloat(0.4);
 
             }
+            showCursor(true);
             
             
         }
