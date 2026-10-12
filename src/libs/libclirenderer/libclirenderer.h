@@ -21,4 +21,8 @@ void offsetCursorAnsi(int x, int y);
 
 // Initialize use of Ansi codes in windows
 void winAnsiInit();
+
+// show and hide the cursor
+void showCursor(bool cursorState);
+
 #endif

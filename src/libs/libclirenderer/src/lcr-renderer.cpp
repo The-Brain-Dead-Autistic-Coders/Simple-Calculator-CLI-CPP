@@ -49,32 +49,32 @@ void waitFloat(double waitTime) {
 void renderSquare(int width, int height) {
     int lineHeightCounterStorage = height;
     int lineWidthCounterStorage = width;
-    std::cout << "┌";
+    std::cout << "┌" << std::flush;
     while (width > 2) {
-        std::cout << "─";
+        std::cout << "─" << std::flush;
         width = width - 1;
     }
     std::cout << "┐";
     width = lineWidthCounterStorage;
-    std::cout << "\n";
+    std::cout << "\n" << std::flush;
     while (height > 2) {
-        std::cout << "│";
+        std::cout << "│" << std::flush;
         while (width > 2) {
-            std::cout << " ";
+            std::cout << " " << std::flush;
             width = width - 1;
         }
         width = lineWidthCounterStorage;
-        std::cout << "│";
-        std::cout << "\n";
+        std::cout << "│" << std::flush;
+        std::cout << "\n" << std::flush;
         height = height - 1;
     }
     height = lineHeightCounterStorage;
-    std::cout << "└";
+    std::cout << "└" << std::flush;
     while (width > 2) {
-        std::cout << "─";
+        std::cout << "─" << std::flush;
         width = width - 1;
     }
-    std::cout << "┘";
+    std::cout << "┘" << std::flush;
 }
 
 
@@ -94,4 +94,14 @@ void offsetCursorAnsi(int x, int y) {
     winAnsiInit();
     // ANSI escape code to move cursor to row (y + 1) and column (x + 1)
     std::cout << "\033[" << (y + 1) << ";" << (x + 1) << "H" << std::flush;
+}
+
+//hide or show the terminal cursor
+void showCursor(bool cursorState) {
+    winAnsiInit();
+    if (cursorState == true) {
+        std::cout << "\033[?25h" << std::flush;
+    } else if (cursorState == false) {
+        std::cout << "\033[?25l" << std::flush;
+    }
 }
