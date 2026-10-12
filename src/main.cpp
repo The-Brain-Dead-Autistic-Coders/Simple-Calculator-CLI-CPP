@@ -61,7 +61,7 @@ int main() {
                 clearScreen();
                 offsetCursorAnsi(offsetX, offsetY);
                 //renderSquare(squareWidthAnim, squareHeightAnim);
-                std::cout << "DVD";
+                std::cout << "DVD" << std::flush;
                 offsetX = offsetX + 1;
                 waitFloat(2);
 
@@ -69,7 +69,7 @@ int main() {
                 clearScreen();
                 offsetCursorAnsi(offsetX, offsetY);
                 //renderSquare(squareWidthAnim, squareHeightAnim);
-                std::cout << "DVD";
+                std::cout << "DVD" << std::flush;
                 offsetY = offsetY + 1;
                 waitFloat(2);
 
