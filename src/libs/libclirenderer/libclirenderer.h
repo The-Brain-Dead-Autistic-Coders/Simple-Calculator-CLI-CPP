@@ -16,4 +16,7 @@ void clearScreen();
 // Wait with support for floating point numbers
 void waitFloat(double waitTime);
 
+// Offsets cursor using ansi codes
+void offsetCursorAnsi(int x, int y);
+
 #endif

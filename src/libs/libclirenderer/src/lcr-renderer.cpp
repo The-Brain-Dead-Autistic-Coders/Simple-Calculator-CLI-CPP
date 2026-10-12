@@ -84,3 +84,8 @@ void offsetCursor(int x, int y) {
         x = x - 1;
     }
 }
+
+void offsetCursorAnsi(int x, int y) {
+    // ANSI escape code to move cursor to row (y + 1) and column (x + 1)
+    std::cout << "\033[" << (y + 1) << ";" << (x + 1) << "H";
+}

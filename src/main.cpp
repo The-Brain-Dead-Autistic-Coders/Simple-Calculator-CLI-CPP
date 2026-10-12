@@ -57,17 +57,17 @@ int main() {
             int squareWidthAnim = 1;
             int squareHeightAnim = 1;
             while (offsetY < 20 && offsetX < 20) {
+                //clearScreen();
                 clearScreen();
-                clearScreen();
-                offsetCursor(offsetX, offsetY);
+                offsetCursorAnsi(offsetX, offsetY);
                 //renderSquare(squareWidthAnim, squareHeightAnim);
                 std::cout << "DVD";
                 offsetX = offsetX + 1;
                 waitFloat(2);
 
+                //clearScreen();
                 clearScreen();
-                clearScreen();
-                offsetCursor(offsetX, offsetY);
+                offsetCursorAnsi(offsetX, offsetY);
                 //renderSquare(squareWidthAnim, squareHeightAnim);
                 std::cout << "DVD";
                 offsetY = offsetY + 1;
