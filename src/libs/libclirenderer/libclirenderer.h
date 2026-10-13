@@ -20,7 +20,7 @@ void waitFloat(double waitTime);
 void offsetCursorAnsi(int x, int y);
 
 // Initialize use of Ansi codes in windows
-void winAnsiInit();
+void winAnsiInit(bool winAnsiEnable);
 
 // show and hide the cursor
 void showCursor(bool cursorState);

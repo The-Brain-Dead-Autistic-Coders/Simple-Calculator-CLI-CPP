@@ -6,33 +6,42 @@
 #include <chrono>
 
 #ifdef _WIN32
-    #include <windows.h>
+#include <windows.h>
 #endif
 
 //Main h file
 #include "../libclirenderer.h"
 
-void winAnsiInit(){
+void winAnsiInit(bool winAnsiEnable){
+
     #ifdef _WIN32
-            
-        // Get the standard output handle for Windows
-        HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-        if (hConsole != INVALID_HANDLE_VALUE) {
-            DWORD mode = 0;
-            GetConsoleMode(hConsole, &mode);
+    // Set console code page to UTF-8 so box-drawing characters render correctly
+    //system("chcp 65001 > nul");
+
+    // Get the standard output handle for Windows
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    if (hConsole != INVALID_HANDLE_VALUE) {
+        DWORD mode = 0;
+        GetConsoleMode(hConsole, &mode);
+        
+        if (winAnsiEnable) {
             // Enable ANSI escape code processing
             SetConsoleMode(hConsole, mode | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
+        } else {
+            // Disable ANSI escape code processing
+            SetConsoleMode(hConsole, mode & ~ENABLE_VIRTUAL_TERMINAL_PROCESSING);
         }
-            
+    }
     #endif
 }
 
 void clearScreen() {
-    winAnsiInit();
+    winAnsiInit(true);
     // \033[H   -> Moves cursor to top-left
     // \033[2J  -> Clears visible viewport
     // \033[3J  -> Wipes out scrollback history
     std::cout << "\033[H\033[2J\033[3J" << std::flush;
+    winAnsiInit(false);
 }
 
 //wait with support for a floating point number
@@ -91,17 +100,19 @@ void offsetCursor(int x, int y) {
 }
 
 void offsetCursorAnsi(int x, int y) {
-    winAnsiInit();
+    winAnsiInit(true);
     // ANSI escape code to move cursor to row (y + 1) and column (x + 1)
     std::cout << "\033[" << (y + 1) << ";" << (x + 1) << "H" << std::flush;
+    winAnsiInit(false);
 }
 
 //hide or show the terminal cursor
 void showCursor(bool cursorState) {
-    winAnsiInit();
+    winAnsiInit(true);
     if (cursorState == true) {
         std::cout << "\033[?25h" << std::flush;
     } else if (cursorState == false) {
         std::cout << "\033[?25l" << std::flush;
     }
+    winAnsiInit(false);
 }
