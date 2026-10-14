@@ -13,7 +13,7 @@ else()
 endif()
 
 # 1. Tell CMake to build the library from the submodule folder
-add_subdirectory(external/libclirenderer/include/libclirenderer/)
+add_subdirectory(external/libclirenderer/)
 
 # Define the target program and its source files
 add_executable("Simple-Calculator-CLI"
