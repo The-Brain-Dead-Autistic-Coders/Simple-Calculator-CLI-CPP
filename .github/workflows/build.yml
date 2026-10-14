@@ -23,6 +23,11 @@ jobs:
             os: windows-2025
             artifact: Simple-Calculator-CLI-windows-x64
 
+          - name: Windows x86
+            os: windows-2025
+            artifact: Simple-Calculator-CLI-windows-x86
+            cmake_args: "-A Win32"
+
           - name: macOS Intel
             os: macos-15-intel
             artifact: Simple-Calculator-CLI-macos-x64
