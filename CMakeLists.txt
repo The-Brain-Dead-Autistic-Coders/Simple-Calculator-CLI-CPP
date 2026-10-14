@@ -12,9 +12,13 @@ else()
     add_compile_options(-Wall -Wextra)
 endif()
 
+# 1. Tell CMake to build the library from the submodule folder
+add_subdirectory(external/libclirenderer/include/libclirenderer/)
+
 # Define the target program and its source files
 add_executable("Simple-Calculator-CLI"
     src/main.cpp
-    src/libs/libclirenderer/src/lcr-renderer.cpp
-    src/libs/libclirenderer/src/lcr-system.cpp
 )
+
+# 2. Link the library target to your calculator executable
+target_link_libraries("Simple-Calculator-CLI" PRIVATE libclirenderer)
