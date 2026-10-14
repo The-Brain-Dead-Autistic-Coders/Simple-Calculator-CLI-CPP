@@ -3,8 +3,8 @@
 #include <fstream>
 #include <cmath>
 
-//Internal libs
-#include "libs/libclirenderer/libclirenderer.h"
+//External libs
+#include "../external/libclirenderer/include/libclirenderer/libclirenderer.h"
 
 
 

@@ -1,0 +1,3 @@
+[submodule "external/libclirenderer"]
+	path = external/libclirenderer
+	url = https://github.com/Sammy-07/libclirenderer.git
