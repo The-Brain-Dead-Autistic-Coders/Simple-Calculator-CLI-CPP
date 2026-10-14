@@ -18,6 +18,11 @@ jobs:
           - name: Linux x64
             os: ubuntu-24.04
             artifact: Simple-Calculator-CLI-linux-x64
+          
+          - name: Linux x86
+            os: ubuntu-24.04
+            artifact: Simple-Calculator-CLI-linux-x86
+            cmake_args: "-DCMAKE_CXX_FLAGS=-m32 -DCMAKE_C_FLAGS=-m32"
 
           - name: Windows x64
             os: windows-2025
@@ -44,8 +49,14 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Install 32-bit Toolchain (Linux only)
+        if: matrix.os == 'ubuntu-24.04' && contains(matrix.name, 'x86')
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++-multilib gcc-multilib
+
       - name: Configure CMake
-        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release ${{ matrix.cmake_args }}
 
       - name: Build
         run: cmake --build build --config Release --parallel
