@@ -102,6 +102,10 @@ int main() {
             showCursor(true);
         }
 
+        if (userInput == "loading") {
+            loadingWheelAt(0, 20, 20);
+        }
+
 
     }
 
