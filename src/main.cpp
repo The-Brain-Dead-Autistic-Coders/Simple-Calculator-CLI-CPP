@@ -86,12 +86,14 @@ int main() {
             std::string scrsaverInput = "Placeholder";
             std::cin >> scrsaverInput;
             while (lifespan > 0) {
+                showCursor(false);
                 clearScreen();
-                offsetCursorAnsi(rand() % 81, rand() % 25);
-                std::cout << scrsaverInput;
+                offsetCursorAnsi((rand() % 81), (rand() % 25));
+                std::cout << scrsaverInput << std::flush;
                 waitFloat(0.3);
                 lifespan = lifespan - 1;
             }
+            showCursor(true);
         }
 
 
