@@ -90,7 +90,7 @@ int main() {
                 clearScreen();
                 offsetCursorAnsi((rand() % 81), (rand() % 25));
                 std::cout << scrsaverInput << std::flush;
-                waitFloat(0.3);
+                waitFloat(0.01);
                 lifespan = lifespan - 1;
             }
             showCursor(true);
