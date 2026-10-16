@@ -83,14 +83,20 @@ int main() {
 
         if (userInput == "scrsaver") {
             int lifespan = 60;
+            float framerate = 0;
             std::string scrsaverInput = "Placeholder";
+            std::cout << "\ntext: ";
             std::cin >> scrsaverInput;
+            std::cout << "\nlifespan: ";
+            std::cin >> lifespan;
+            std::cout << "\nframerate: ";
+            std::cin >> framerate;
             while (lifespan > 0) {
                 showCursor(false);
                 clearScreen();
                 offsetCursorAnsi((rand() % 81), (rand() % 25));
                 std::cout << scrsaverInput << std::flush;
-                waitFloat(0.01);
+                waitFloat(framerate);
                 lifespan = lifespan - 1;
             }
             showCursor(true);
