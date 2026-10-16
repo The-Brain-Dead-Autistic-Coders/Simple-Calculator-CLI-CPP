@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <cmath>
+#include <cstdlib>
 
 //External libs
 #include "../external/libclirenderer/include/libclirenderer/libclirenderer.h"
@@ -79,6 +80,21 @@ int main() {
             
             
         }
+
+        if (userInput == "scrsaver") {
+            int lifespan = 60;
+            std::string scrsaverInput = "Placeholder";
+            std::cin >> scrsaverInput;
+            while (lifespan > 0) {
+                clearScreen();
+                offsetCursorAnsi(rand() % 81, rand() % 25);
+                std::cout << scrsaverInput;
+                waitFloat(0.3);
+                lifespan = lifespan - 1;
+            }
+        }
+
+
     }
 
     return 0;
