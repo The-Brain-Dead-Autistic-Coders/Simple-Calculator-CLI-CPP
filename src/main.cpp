@@ -83,7 +83,7 @@ int main() {
 
         if (userInput == "scrsaver") {
             int lifespan = 60;
-            float framerate = 0;
+            double framerate = 0;
             std::string scrsaverInput = "Placeholder";
             std::cout << "\ntext: ";
             std::cin >> scrsaverInput;
