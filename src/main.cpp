@@ -103,6 +103,7 @@ int main() {
         }
 
         if (userInput == "loading") {
+            clearScreen();
             loadingWheelAt(0, 20, 20);
         }
 
